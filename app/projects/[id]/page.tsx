@@ -28,7 +28,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const project = getProject(id);
   if (!project) return {};
-  return { title: project.title, description: project.summary };
+  return {
+    title: project.title,
+    description: project.summary,
+    alternates: { canonical: `/projects/${project.id}` },
+    openGraph: { url: `/projects/${project.id}` },
+  };
 }
 
 export default async function ProjectDetailPage({ params }: Props) {
