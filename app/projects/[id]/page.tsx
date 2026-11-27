@@ -59,7 +59,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         <div className="mx-auto max-w-6xl px-5 pb-20 pt-10 sm:px-8">
           <Link
             href="/#projects"
-            className="inline-flex rounded-lg px-3 py-2 text-[0.9375rem] font-medium text-muted transition-colors -ml-3 hover:bg-field hover:text-ink"
+            className="inline-flex rounded-md px-3 py-2 text-[0.9375rem] font-medium text-muted transition-colors -ml-3 hover:bg-field hover:text-ink"
           >
             프로젝트 목록으로
           </Link>
@@ -79,7 +79,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               </div>
             </div>
             <div className="space-y-5">
-              <div className="relative aspect-[16/10] overflow-hidden rounded-[20px] bg-[#dfe5ee]">
+              <div className="relative aspect-[16/10] overflow-hidden rounded-lg bg-[#dfe5ee]">
                 <Image
                   src={project.thumbnail}
                   alt={`${project.title} 화면`}
@@ -122,7 +122,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                 운영 구조
               </h2>
               <p className="mt-2 text-muted">EC2 한 대에서 Docker Compose로 컨테이너 5개를 함께 운영했습니다.</p>
-              <figure className="mt-8 rounded-[24px] border border-line p-4 sm:p-8">
+              <figure className="mt-8 rounded-lg border border-line p-4 sm:p-8">
                 <div className="mx-auto max-w-3xl">
                   <ArchitectureDiagram />
                 </div>

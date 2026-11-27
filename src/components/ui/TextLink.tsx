@@ -5,7 +5,7 @@ import type { ReactNode } from 'react';
 export type ButtonVariant = 'primary' | 'secondary' | 'dark';
 
 const base =
-  'inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-5 text-base font-bold transition-colors';
+  'inline-flex min-h-12 items-center justify-center gap-2 rounded-md px-5 text-base font-bold transition-colors';
 
 export const buttonStyles: Record<ButtonVariant, string> = {
   primary: `${base} bg-brand text-white hover:bg-brand-dark`,

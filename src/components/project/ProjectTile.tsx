@@ -7,9 +7,9 @@ export default function ProjectTile({ project }: { project: Project }) {
   return (
     <Link
       href={`/projects/${project.id}`}
-      className="group flex h-full flex-col rounded-3xl bg-white p-4 transition-shadow hover:shadow-[0_8px_24px_rgba(25,31,40,0.08)]"
+      className="group flex h-full flex-col rounded-lg bg-white p-4 transition-shadow hover:shadow-[0_8px_24px_rgba(25,31,40,0.08)]"
     >
-      <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-[#dfe5ee]">
+      <div className="relative aspect-[16/10] overflow-hidden rounded-md bg-[#dfe5ee]">
         <Image
           src={project.thumbnail}
           alt={`${project.title} 화면`}

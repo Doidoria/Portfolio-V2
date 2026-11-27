@@ -12,8 +12,8 @@ export default function FeaturedProject() {
           대표 프로젝트
         </h2>
 
-        <article className="mt-8 grid grid-cols-1 gap-8 rounded-[28px] bg-white p-5 sm:p-8 lg:grid-cols-2 lg:gap-10 lg:p-10">
-          <div className="relative aspect-[16/10] overflow-hidden rounded-[18px] bg-[#1b2433]">
+        <article className="mt-8 grid grid-cols-1 gap-8 rounded-lg bg-white p-5 sm:p-8 lg:grid-cols-2 lg:gap-10 lg:p-10">
+          <div className="relative aspect-[16/10] overflow-hidden rounded-lg bg-[#1b2433]">
             <Image
               src={project.thumbnail}
               alt="Hangle 메인 화면. 추천 대회와 인기 데이터셋 목록"
@@ -39,7 +39,7 @@ export default function FeaturedProject() {
             {project.stats && (
               <dl className="mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                 {project.stats.map((stat) => (
-                  <div key={stat.label} className="rounded-2xl bg-subtle px-5 py-4">
+                  <div key={stat.label} className="rounded-md bg-subtle px-5 py-4">
                     <dt className="text-sm text-muted">{stat.label}</dt>
                     <dd className="mt-1 text-2xl font-extrabold">{stat.value}</dd>
                   </div>

@@ -12,7 +12,7 @@ export default function Skills() {
 
         <div className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-3">
           {skillGroups.map((group) => (
-            <div key={group.title} className="rounded-[20px] border border-line p-6">
+            <div key={group.title} className="rounded-lg border border-line p-6">
               <h3 className="text-base font-extrabold text-brand">{group.title}</h3>
               <dl className="mt-3 divide-y divide-line">
                 {group.rows.map((row) => (

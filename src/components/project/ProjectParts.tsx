@@ -10,7 +10,7 @@ export function Rich({ text }: { text: string }) {
     <>
       {parts.map((part, i) =>
         i % 2 === 1 ? (
-          <code key={i} className="rounded-md bg-field px-1.5 py-0.5 font-mono text-[0.85em] text-ink">
+          <code key={i} className="rounded-sm bg-field px-1.5 py-0.5 font-mono text-[0.85em] text-ink">
             {part}
           </code>
         ) : (
@@ -29,7 +29,7 @@ export function ProjectMeta({ project }: { project: Project }) {
     { label: '기술', value: project.stack.join(', ') },
   ];
   return (
-    <dl className="divide-y divide-line rounded-2xl bg-subtle px-5 text-[0.9375rem]">
+    <dl className="divide-y divide-line rounded-md bg-subtle px-5 text-[0.9375rem]">
       {rows.map((row) => (
         <div key={row.label} className="grid gap-0.5 py-3.5 sm:grid-cols-[3.5rem_1fr] sm:gap-4">
           <dt className="font-bold text-muted">{row.label}</dt>
@@ -44,7 +44,7 @@ export function ContributionList({ contributions }: { contributions: Contributio
   return (
     <div className="space-y-4">
       {contributions.map((group) => (
-        <div key={group.area} className="rounded-[20px] border border-line p-6">
+        <div key={group.area} className="rounded-lg border border-line p-6">
           <h3 className="mb-3 text-base font-extrabold text-brand">{group.area}</h3>
           <ul className="list-disc space-y-2 pl-5 marker:text-brand">
             {group.items.map((item) => (
@@ -69,7 +69,7 @@ const methodColor: Record<ApiEndpoint['method'], string> = {
 
 export function ApiTable({ apis, caption }: { apis: ApiEndpoint[]; caption: string }) {
   return (
-    <div className="overflow-x-auto rounded-[20px] border border-line" tabIndex={0} role="region" aria-label={caption}>
+    <div className="overflow-x-auto rounded-lg border border-line" tabIndex={0} role="region" aria-label={caption}>
       <table className="w-full min-w-[520px] border-collapse text-left text-[0.9375rem]">
         <caption className="sr-only">{caption}</caption>
         <thead className="sr-only">
@@ -83,7 +83,7 @@ export function ApiTable({ apis, caption }: { apis: ApiEndpoint[]; caption: stri
           {apis.map((api) => (
             <tr key={`${api.method} ${api.path}`} className="border-b border-line last:border-b-0">
               <td className="w-24 py-3 pl-5">
-                <span className={`rounded-md px-2 py-0.5 font-mono text-xs font-bold ${methodColor[api.method]}`}>
+                <span className={`rounded-sm px-2 py-0.5 font-mono text-xs font-bold ${methodColor[api.method]}`}>
                   {api.method}
                 </span>
               </td>
@@ -118,7 +118,7 @@ export function TroubleshootingBlock({ item }: { item: Troubleshooting }) {
   if (item.next) steps.push({ label: '다시 한다면', body: <p className="text-muted">{item.next}</p> });
 
   return (
-    <article className="rounded-[24px] bg-white p-6 sm:p-8">
+    <article className="rounded-lg bg-white p-6 sm:p-8">
       <h3 className="text-xl font-extrabold leading-snug">{item.title}</h3>
       <dl className="mt-5 space-y-4">
         {steps.map((step) => (
@@ -128,7 +128,7 @@ export function TroubleshootingBlock({ item }: { item: Troubleshooting }) {
           </div>
         ))}
       </dl>
-      <div className="mt-6 rounded-2xl bg-brand-soft px-5 py-4">
+      <div className="mt-6 rounded-md bg-brand-soft px-5 py-4">
         <p className="text-sm font-bold text-brand">결과</p>
         <p className="mt-1 font-bold">{item.result}</p>
       </div>

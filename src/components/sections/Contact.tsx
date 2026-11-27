@@ -6,7 +6,7 @@ export default function Contact() {
   return (
     <footer id="contact" aria-labelledby="contact-title" className="scroll-mt-16">
       <div className="mx-auto max-w-6xl px-5 pb-16 sm:px-8">
-        <div className="flex flex-wrap items-center justify-between gap-6 rounded-[28px] bg-ink px-6 py-10 text-white sm:px-12 sm:py-14">
+        <div className="flex flex-wrap items-center justify-between gap-6 rounded-lg bg-ink px-6 py-10 text-white sm:px-12 sm:py-14">
           <div>
             <h2 id="contact-title" className="text-2xl font-extrabold sm:text-[1.75rem]">
               함께 일할 기회를 기다리고 있습니다

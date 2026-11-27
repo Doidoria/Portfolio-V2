@@ -16,7 +16,7 @@ export default function Hero() {
     <section aria-labelledby="hero-title" className="mx-auto max-w-6xl px-5 pb-20 pt-14 sm:px-8 lg:pb-24 lg:pt-20">
       <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)]">
         <div>
-          <p className="inline-flex items-center gap-2 rounded-full bg-brand-soft px-3.5 py-1.5 text-[0.9375rem] font-bold text-brand">
+          <p className="inline-flex items-center gap-2 rounded-sm bg-brand-soft px-3.5 py-1.5 text-[0.9375rem] font-bold text-brand">
             <span className="h-[7px] w-[7px] rounded-full bg-brand" aria-hidden />
             구직 중, 바로 출근 가능
           </p>
@@ -41,7 +41,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="rounded-[28px] bg-subtle p-6 sm:p-8">
+        <div className="rounded-lg bg-subtle p-6 sm:p-8">
           <h2 className="mb-5 text-base font-extrabold">Hangle에서 로그인이 처리되는 순서</h2>
           <ol className="space-y-2.5">
             {loginFlow.map((step, i) => {
@@ -49,10 +49,10 @@ export default function Hero() {
               return (
                 <li
                   key={step}
-                  className={`flex items-center gap-4 rounded-2xl px-5 py-4 ${isLast ? 'bg-brand text-white' : 'bg-white'}`}
+                  className={`flex items-center gap-4 rounded-md px-5 py-4 ${isLast ? 'bg-brand text-white' : 'bg-white'}`}
                 >
                   <span
-                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full font-extrabold ${
+                    className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-sm font-extrabold ${
                       isLast ? 'bg-white/20' : 'bg-brand-soft text-brand'
                     }`}
                     aria-hidden
