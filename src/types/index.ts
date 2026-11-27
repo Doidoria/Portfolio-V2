@@ -14,7 +14,12 @@ export type TechStack =
   | 'Spring Boot' 
   | 'Docker'      
   | 'Jenkins'
-  | 'AWS EC2';
+  | 'AWS EC2'
+  | 'Spring Security'
+  | 'JPA'
+  | 'MySQL'
+  | 'Redis'
+  | 'GitHub Actions';
 
 export interface Project {
   id: string;
@@ -24,7 +29,7 @@ export interface Project {
   thumbnail: string;
   techStacks: TechStack[];
   links: {
-    github: string;
+    github?: string; // 비공개 레포는 생략
     live?: string;
     ppt?: string;
   };

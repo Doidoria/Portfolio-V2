@@ -21,7 +21,7 @@ export default function Footer() {
   return (
     <footer className="w-full py-16 text-center border-t border-white/5 bg-[#030303] mt-20">
       <div className="max-w-4xl mx-auto px-6 flex flex-col items-center gap-6">
-        <h2 className="text-2xl font-bold text-white">Let's work together.</h2>
+        <h2 className="text-2xl font-bold text-white">Let&apos;s work together.</h2>
         <p className="text-gray-400 font-light mb-4">
           새로운 도전을 기다리고 있습니다. 언제든 편하게 연락 주세요.
         </p>

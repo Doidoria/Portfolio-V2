@@ -33,10 +33,22 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         ))}
       </div>
 
-      <div className="flex gap-4">
-        <a href={project.links.github} target="_blank" rel="noreferrer" className="px-8 py-4 bg-white text-black font-semibold rounded-xl hover:bg-gray-200 transition-colors">
-          GitHub Repo
-        </a>
+      <div className="flex flex-wrap gap-4">
+        {project.links.github && (
+          <a href={project.links.github} target="_blank" rel="noreferrer" className="px-8 py-4 bg-white text-black font-semibold rounded-xl hover:bg-gray-200 transition-colors">
+            GitHub Repo
+          </a>
+        )}
+        {project.links.live && (
+          <a href={project.links.live} target="_blank" rel="noreferrer" className="px-8 py-4 bg-transparent border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors">
+            Live Site
+          </a>
+        )}
+        {project.links.ppt && (
+          <a href={project.links.ppt} target="_blank" rel="noreferrer" className="px-8 py-4 bg-transparent border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors">
+            발표 자료
+          </a>
+        )}
       </div>
     </main>
   );

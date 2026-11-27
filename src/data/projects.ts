@@ -3,6 +3,24 @@ import { Project } from '@/src/types';
 
 export const projectsData: Project[] = [
   {
+    id: 'hangle',
+    title: 'Hangle',
+    shortDesc: 'Spring Boot와 React 기반 머신러닝 대회 플랫폼 (5인 팀 · 팀장)',
+    detailedDesc: [
+      'CSV 제출부터 Python 자동 채점, 리더보드 반영까지 제공하는 머신러닝 대회 플랫폼입니다. 코리아IT아카데미 빅데이터UI 과정 5인 팀 프로젝트에서 팀장을 맡았습니다.',
+      '백엔드: JWT 인증과 Redis, 사용자 관리·권한 설정, 카카오 로그인, 휴대폰 인증 API, 사용자·개발자용 챗봇 API, Swagger 문서화를 담당했습니다.',
+      '프론트엔드: 로그인·회원가입, 마이프로필, 사용자 설정, 챗봇 UI를 구현했습니다.',
+      '인프라: AWS EC2, Docker·Docker Compose 환경, Jenkins 배포 자동화를 직접 구축했습니다. 현재는 비용 문제로 서버를 종료했습니다.'
+    ],
+    thumbnail: '/images/projects/hangle.png',
+    techStacks: ['Spring Boot', 'Spring Security', 'React', 'MySQL', 'Redis', 'Docker', 'Jenkins', 'AWS EC2'],
+    links: {
+      github: 'https://github.com/Doidoria/Hangle-PROJECT',
+      ppt: 'https://docs.google.com/presentation/d/e/2PACX-1vSg1h9NvZNjzSKujmwQxGmT5QqN6h0Y2nqCdztCroEf7TVdp_FwLXbFe5L9KzNstQ/pub?start=false&loop=false&delayms=3000'
+    },
+    period: '2025.10 - 2025.12'
+  },
+  {
     id: 'cafe-kiosk',
     title: 'Cafe Kiosk',
     shortDesc: 'Next.js와 Firebase 기반 실시간 O2O 카페 키오스크',
@@ -14,10 +32,10 @@ export const projectsData: Project[] = [
     thumbnail: '/images/projects/kiosk.png',
     techStacks: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Firebase'],
     links: {
-      github: 'https://github.com/Doidoria/Cafe_Kiosk?tab=readme-ov-file',
+      github: 'https://github.com/Doidoria/Cafe_Kiosk',
       live: 'https://cafe-kiosk.vercel.app/'
     },
-    period: '2023.10 - 2023.12'
+    period: '2025.11 - 2025.12'
   },
   {
     id: 'do-tai-kun',
@@ -34,7 +52,7 @@ export const projectsData: Project[] = [
       github: 'https://github.com/Doidoria/DoTaiKun-WEB',
       live: 'https://do-tai-kun-web.vercel.app/'
     },
-    period: '2023.07 - 2023.09'
+    period: '2026.03 - 2026.04'
   },
   {
     id: 'do-ai',
@@ -50,23 +68,6 @@ export const projectsData: Project[] = [
       github: 'https://github.com/Doidoria/DoAiGPT',
       live: 'https://do-ai-gpt-fn.vercel.app/'
     },
-    period: '2023.04 - 2023.06'
-  },
-  {
-    id: 'hangle',
-    title: 'Hangle',
-    shortDesc: 'Spring Boot와 React 기반 머신러닝 대회 플랫폼',
-    detailedDesc: [
-      '머신러닝 모델 제출부터 자동 채점, 리더보드 반영까지 전 과정을 제공하는 풀스택 서비스형 웹 플랫폼입니다.',
-      '프론트엔드 UI 구현은 물론, JWT 기반 인증 및 OAuth2 챗봇 API 등 백엔드 로직까지 직접 설계하고 개발했습니다.',
-      'Docker, Jenkins, AWS EC2를 활용한 CI/CD 배포 자동화 파이프라인을 직접 구축하여 인프라 역량을 입증했습니다.'
-    ],
-    thumbnail: '/images/projects/hangle.png',
-    techStacks: ['React', 'Spring Boot', 'Docker', 'Jenkins', 'AWS EC2'],
-    links: {
-      github: 'https://github.com/Doidoria/Hangle-PROJECT',
-      ppt: 'https://docs.google.com/presentation/d/e/2PACX-1vSg1h9NvZNjzSKujmwQxGmT5QqN6h0Y2nqCdztCroEf7TVdp_FwLXbFe5L9KzNstQ/pub?start=false&loop=false&delayms=3000'
-    },
-    period: '2023.01 - 2023.03'
+    period: '2025.07 - 2025.09'
   },
 ];
