@@ -6,7 +6,9 @@
 
 - Next.js 16 (App Router), React 19, TypeScript
 - Tailwind CSS 4
-- 글꼴: Gothic A1, IBM Plex Mono(코드 표기) — Fontsource로 자체 호스팅
+- 글꼴: Pretendard(npm 패키지, 동적 서브셋), IBM Plex Mono(코드 표기)
+- 라이트/다크 모드: OS 설정을 따르고 헤더 버튼으로 전환, 선택은 브라우저에 저장
+- 링크 미리보기 이미지: `next/og`로 메인과 프로젝트별 이미지를 빌드 시 생성
 - 배포: Vercel
 
 ## 구조
@@ -31,6 +33,12 @@ src/
 ## 프로젝트 추가하기
 
 `src/data/projects.ts`의 `projectsData` 배열에 항목을 추가합니다. 첫 번째 항목이 대표 프로젝트로 크게 보입니다. 설명 문자열 안에서 `` `값` ``처럼 백틱으로 감싼 부분은 코드 글꼴로 표시됩니다.
+
+## 시연 영상 넣기
+
+1. 영상을 `public/videos/hangle-demo.mp4`로 저장합니다 (MP4, H.264, 1080p 이하, 30초~1분 권장).
+2. `src/data/projects.ts`의 Hangle 항목에서 `demo` 주석을 풉니다.
+3. Hangle 상세 페이지에 플레이어가 나타납니다.
 
 ## 실행
 

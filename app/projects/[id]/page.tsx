@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import SiteHeader from '@/src/components/sections/SiteHeader';
@@ -11,6 +10,7 @@ import {
   ProjectMeta,
   TroubleshootingBlock,
 } from '@/src/components/project/ProjectParts';
+import ProjectImage from '@/src/components/project/ProjectImage';
 import ArchitectureDiagram from '@/src/components/project/ArchitectureDiagram';
 import { getProject, projectsData } from '@/src/data/projects';
 
@@ -50,7 +50,7 @@ export default async function ProjectDetailPage({ params }: Props) {
   const project = getProject(id);
   if (!project) notFound();
 
-  const sectionTitle = 'text-2xl font-extrabold tracking-[-0.02em]';
+  const sectionTitle = 'text-2xl font-bold tracking-[-0.02em]';
 
   return (
     <>
@@ -66,10 +66,13 @@ export default async function ProjectDetailPage({ params }: Props) {
 
           <div className="mt-6 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-12">
             <div>
-              <p className="text-[0.9375rem] font-bold text-brand">
+              <p className="flex flex-wrap items-center gap-2 text-[0.9375rem] font-bold text-brand">
+                {project.status && (
+                  <span className="rounded-sm bg-brand px-2 py-0.5 text-xs text-on-brand">{project.status}</span>
+                )}
                 {project.team} / {project.period}
               </p>
-              <h1 className="mt-2 text-4xl font-extrabold tracking-[-0.03em] sm:text-5xl">{project.title}</h1>
+              <h1 className="mt-2 text-4xl font-bold tracking-[-0.03em] sm:text-5xl">{project.title}</h1>
               <p className="mt-4 text-lg text-muted">{project.summary}</p>
               <div className="mt-8">
                 <ProjectMeta project={project} />
@@ -79,14 +82,12 @@ export default async function ProjectDetailPage({ params }: Props) {
               </div>
             </div>
             <div className="space-y-5">
-              <div className="relative aspect-[16/10] overflow-hidden rounded-lg bg-[#dfe5ee]">
-                <Image
-                  src={project.thumbnail}
-                  alt={`${project.title} 화면`}
-                  fill
+              <div className="relative aspect-[16/10] overflow-hidden rounded-lg bg-media">
+                <ProjectImage
+                  project={project}
                   priority
                   sizes="(max-width: 1024px) 100vw, 560px"
-                  className="object-cover object-left-top"
+                  imageClassName="object-cover object-left-top"
                 />
               </div>
               {project.overview.map((p) => (
@@ -97,6 +98,28 @@ export default async function ProjectDetailPage({ params }: Props) {
             </div>
           </div>
         </div>
+
+        {project.demo && (
+          <section aria-labelledby="demo-title" className="border-t border-line">
+            <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
+              <h2 id="demo-title" className={sectionTitle}>
+                시연 영상
+              </h2>
+              <p className="mt-2 text-muted">{project.demo.caption}</p>
+              {/* 자동 재생하지 않고, 메타데이터만 먼저 받아 첫 화면 로딩을 가볍게 유지 */}
+              <video
+                className="mt-8 w-full rounded-lg border border-line bg-media"
+                src={project.demo.src}
+                poster={project.demo.poster}
+                controls
+                playsInline
+                preload="metadata"
+              >
+                영상을 재생할 수 없는 브라우저입니다.
+              </video>
+            </div>
+          </section>
+        )}
 
         <section aria-labelledby="work-title" className="border-t border-line">
           <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-5 py-20 sm:px-8 lg:grid-cols-2">

@@ -45,7 +45,7 @@ export function ContributionList({ contributions }: { contributions: Contributio
     <div className="space-y-4">
       {contributions.map((group) => (
         <div key={group.area} className="rounded-lg border border-line p-6">
-          <h3 className="mb-3 text-base font-extrabold text-brand">{group.area}</h3>
+          <h3 className="mb-3 text-base font-bold text-brand">{group.area}</h3>
           <ul className="list-disc space-y-2 pl-5 marker:text-brand">
             {group.items.map((item) => (
               <li key={item}>
@@ -100,8 +100,22 @@ export function ApiTable({ apis, caption }: { apis: ApiEndpoint[]; caption: stri
 /** 문제 → 원인 → 해결 → 결과 순서로 보여 준다 */
 export function TroubleshootingBlock({ item }: { item: Troubleshooting }) {
   const steps: { label: string; body: React.ReactNode }[] = [
-    { label: '문제', body: <p><Rich text={item.problem} /></p> },
-    { label: '원인', body: <p><Rich text={item.cause} /></p> },
+    {
+      label: '문제',
+      body: (
+        <p>
+          <Rich text={item.problem} />
+        </p>
+      ),
+    },
+    {
+      label: '원인',
+      body: (
+        <p>
+          <Rich text={item.cause} />
+        </p>
+      ),
+    },
     {
       label: '해결',
       body: (
@@ -118,8 +132,8 @@ export function TroubleshootingBlock({ item }: { item: Troubleshooting }) {
   if (item.next) steps.push({ label: '다시 한다면', body: <p className="text-muted">{item.next}</p> });
 
   return (
-    <article className="rounded-lg bg-white p-6 sm:p-8">
-      <h3 className="text-xl font-extrabold leading-snug">{item.title}</h3>
+    <article className="rounded-lg bg-surface p-6 sm:p-8">
+      <h3 className="text-xl font-bold leading-snug">{item.title}</h3>
       <dl className="mt-5 space-y-4">
         {steps.map((step) => (
           <div key={step.label} className="grid gap-1 sm:grid-cols-[5.5rem_1fr] sm:gap-4">

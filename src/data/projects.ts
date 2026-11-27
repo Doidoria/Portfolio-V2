@@ -19,7 +19,20 @@ export const projectsData: Project[] = [
       { label: '평상시 메모리 사용률', value: '75% → 43%' },
       { label: '운영 서버', value: 'EC2 한 대' },
     ],
-    stack: ['Java', 'Spring Boot', 'Spring Security', 'JPA', 'MySQL', 'Redis', 'Spring AI', 'React', 'Docker', 'Jenkins', 'Nginx', 'AWS EC2'],
+    stack: [
+      'Java',
+      'Spring Boot',
+      'Spring Security',
+      'JPA',
+      'MySQL',
+      'Redis',
+      'Spring AI',
+      'React',
+      'Docker',
+      'Jenkins',
+      'Nginx',
+      'AWS EC2',
+    ],
     thumbnail: '/images/projects/hangle.png',
     links: {
       github: 'https://github.com/Doidoria/Hangle-PROJECT',
@@ -67,13 +80,16 @@ export const projectsData: Project[] = [
           'Ollama 동시 추론을 `OLLAMA_NUM_PARALLEL=1`로 제한',
           '`healthcheck`와 `depends_on: service_healthy`로 기동 순서를 고정하고 `restart: always`로 자동 복구',
         ],
-        result: '평상시 메모리 사용률을 75%에서 43%로 낮췄고, 추가 비용 없이 최종 발표까지 단일 인스턴스로 운영했습니다.',
+        result:
+          '평상시 메모리 사용률을 75%에서 43%로 낮췄고, 추가 비용 없이 최종 발표까지 단일 인스턴스로 운영했습니다.',
         next: '빌드는 Jenkins 서버에서 하고 EC2에는 완성된 이미지만 배포하거나, 챗봇을 별도 서버로 분리하겠습니다.',
       },
       {
         title: '팀원 중도 이탈로 대회 목록 기능이 멈춤',
-        problem: '개발 도중 팀원 한 명이 빠지면서 대회 목록 페이지 작업이 비었고, 다른 조보다 늦게 시작해 일정 여유도 없었습니다.',
-        cause: '기능 단위로만 업무를 나눠 한 명이 빠지면 기능 전체가 멈추는 구조였고, API 형식이 문서로 정리되지 않아 인수인계가 어려웠습니다.',
+        problem:
+          '개발 도중 팀원 한 명이 빠지면서 대회 목록 페이지 작업이 비었고, 다른 조보다 늦게 시작해 일정 여유도 없었습니다.',
+        cause:
+          '기능 단위로만 업무를 나눠 한 명이 빠지면 기능 전체가 멈추는 구조였고, API 형식이 문서로 정리되지 않아 인수인계가 어려웠습니다.',
         solution: [
           '남은 작업을 Jira 이슈 4개로 나눠 담당자와 기한을 다시 정함',
           'Swagger 문서로 API 명세를 공유해 화면 작업자가 바로 붙을 수 있게 함',
@@ -82,6 +98,12 @@ export const projectsData: Project[] = [
         result: '프론트엔드와 백엔드 사이의 요청 형식 확인이 줄었고, 일정 지연 없이 12월 최종 배포를 마쳤습니다.',
       },
     ],
+    // TODO(태현): 시연 영상을 public/videos/hangle-demo.mp4 로 넣고 아래 주석을 풀면 상세 페이지에 플레이어가 나온다
+    // demo: {
+    //   src: '/videos/hangle-demo.mp4',
+    //   poster: '/images/projects/hangle.png',
+    //   caption: '로그인부터 CSV 제출, 자동 채점, 리더보드 반영까지',
+    // },
     hasArchitecture: true,
     apis: [
       { method: 'POST', path: '/api/user/login', desc: 'JWT 로그인' },
@@ -95,6 +117,53 @@ export const projectsData: Project[] = [
     ],
   },
   {
+    // TODO(태현): 문제 해결의 '원인' 문장이 실제와 맞는지 확인
+    // TODO(태현): 베타 테스트가 끝나면 화면 캡처(thumbnail), DB·배포 구성, 문제 해결 사례를 채우고 status를 지우기
+    id: 'yes-care',
+    title: "Ye's Care",
+    summary: '병원 동행 서비스와 이를 운영하는 관리자·매니저용 대시보드',
+    period: '2026.03 - 진행 중',
+    team: '1인 풀스택 (기획 협의, 프론트엔드, 백엔드, 배포)',
+    backend: 'Spring Boot REST API, JWT 인증',
+    tag: 'Spring Boot + Next.js',
+    status: '베타 테스트 준비 중',
+    highlights: [
+      '관리자·매니저 대시보드와 역할별 접근 제어',
+      'Spring Boot 공통 응답 형식과 전역 처리',
+      '지인을 통해 실제 사용 예정인 서비스',
+    ],
+    stack: ['Java', 'Spring Boot', 'Next.js', 'TypeScript', 'Tailwind CSS'],
+    links: {},
+    overview: [
+      '병원 동행 서비스와 이를 운영하는 관리자·매니저용 대시보드입니다. 지인을 통해 실제 사용될 예정이며, 지금은 베타 테스트를 준비하고 있습니다.',
+      '기획 방향은 대표님과 협의해 정했고, 화면과 API, 배포까지 혼자 맡고 있습니다. 비공개 저장소라 코드와 화면은 일부만 공개합니다.',
+    ],
+    contributions: [
+      {
+        area: '백엔드',
+        items: ['Spring Boot REST API 설계와 구현', '`ResponseBodyAdvice` 기반 공통 응답 래퍼로 API 응답 형식 통일'],
+      },
+      {
+        area: '프론트엔드',
+        items: [
+          'Next.js 미들웨어에서 JWT를 확인해 `/admin`, `/manager` 경로 접근 제한',
+          '승인·거절 처리 후 통계 카드와 목록이 새로고침 없이 갱신되는 매니저 관리 화면',
+        ],
+      },
+    ],
+    troubleshooting: [
+      {
+        title: 'Boolean을 반환하는 API에서 ClassCastException 발생',
+        problem:
+          '공통 응답 래퍼를 적용한 뒤 `ResponseEntity<Boolean>`을 반환하는 API를 호출하면 `ClassCastException`이 났습니다.',
+        cause:
+          '`GlobalResponseWrapper`가 모든 응답 본문을 공통 응답 객체로 감싸면서, Boolean 응답에서 선언된 반환 타입과 실제 본문 타입이 맞지 않게 됐습니다.',
+        solution: ['`supports()`에서 Boolean을 반환하는 메서드는 감싸지 않도록 제외'],
+        result: 'Boolean 응답 API가 정상 동작하고, 나머지 API는 공통 응답 형식을 그대로 유지합니다.',
+      },
+    ],
+  },
+  {
     id: 'do-tai-kun',
     title: 'DoTaiKun',
     summary: '마인크래프트 서버 공식 웹사이트. 공지 게시판, 건축 콘테스트 투표, 운영진 전용 관리 화면',
@@ -102,7 +171,11 @@ export const projectsData: Project[] = [
     team: '개인 프로젝트',
     backend: 'Firebase Auth, Firestore, Storage',
     tag: 'React + Firebase',
-    highlights: ['운영진 전용 공지·콘테스트 관리 화면', 'Firestore로 투표 집계와 중복 투표 방지', '모바일·태블릿 반응형'],
+    highlights: [
+      '운영진 전용 공지·콘테스트 관리 화면',
+      'Firestore로 투표 집계와 중복 투표 방지',
+      '모바일·태블릿 반응형',
+    ],
     stack: ['React', 'Vite', 'JavaScript', 'Tailwind CSS', 'Firebase', 'React Router'],
     thumbnail: '/images/projects/dotaikun.png',
     links: {
@@ -141,7 +214,11 @@ export const projectsData: Project[] = [
     team: '개인 프로젝트',
     backend: 'Firestore 실시간 구독, Firebase Storage',
     tag: 'Next.js + Firebase',
-    highlights: ['주문이 관리 화면에 새로고침 없이 반영', '메뉴 등록·품절 처리, 당일 매출 집계', 'Zustand 장바구니 상태 관리'],
+    highlights: [
+      '주문이 관리 화면에 새로고침 없이 반영',
+      '메뉴 등록·품절 처리, 당일 매출 집계',
+      'Zustand 장바구니 상태 관리',
+    ],
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Firebase'],
     thumbnail: '/images/projects/kiosk.png',
     links: {

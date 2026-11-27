@@ -29,6 +29,15 @@ export interface ProjectLinks {
   ppt?: string;
 }
 
+export interface DemoVideo {
+  /** public 폴더 기준 경로 (예: '/videos/hangle-demo.mp4') */
+  src: string;
+  /** 재생 전 보여 줄 이미지 (선택) */
+  poster?: string;
+  /** 영상 설명 한 줄 */
+  caption: string;
+}
+
 export interface Stat {
   label: string;
   value: string;
@@ -51,12 +60,17 @@ export interface Project {
   /** 대표 프로젝트 수치 타일 (선택) */
   stats?: Stat[];
   stack: string[];
-  thumbnail: string;
+  /** 화면 캡처 경로. 없으면 제목으로 만든 대체 썸네일을 보여 준다 */
+  thumbnail?: string;
+  /** 진행 중인 프로젝트 표시 (예: '진행 중', '베타 테스트 중') */
+  status?: string;
   links: ProjectLinks;
   overview: string[];
   contributions: Contribution[];
   troubleshooting: Troubleshooting[];
   apis?: ApiEndpoint[];
+  /** 시연 영상. 있으면 상세 페이지 상단에 플레이어가 나온다 */
+  demo?: DemoVideo;
   /** 상세 페이지에 서버 구조도를 보여 줄지 (Hangle) */
   hasArchitecture?: boolean;
 }

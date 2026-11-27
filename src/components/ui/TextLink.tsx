@@ -5,12 +5,12 @@ import type { ReactNode } from 'react';
 export type ButtonVariant = 'primary' | 'secondary' | 'dark';
 
 const base =
-  'inline-flex min-h-12 items-center justify-center gap-2 rounded-md px-5 text-base font-bold transition-colors';
+  'inline-flex min-h-12 items-center justify-center gap-2 rounded-md px-5 text-base font-bold transition-[background-color,color,transform] duration-200 active:scale-[0.98]';
 
 export const buttonStyles: Record<ButtonVariant, string> = {
-  primary: `${base} bg-brand text-white hover:bg-brand-dark`,
-  secondary: `${base} bg-field text-[#333d4b] hover:bg-line`,
-  dark: `${base} bg-ink text-white hover:bg-[#333d4b]`,
+  primary: `${base} bg-brand text-on-brand hover:bg-brand-dark`,
+  secondary: `${base} bg-field text-ink/85 hover:bg-line`,
+  dark: `${base} bg-ink text-bg hover:bg-ink/85`,
 };
 
 /** 외부 링크: 새 탭으로 열린다는 걸 스크린리더에도 알린다 */

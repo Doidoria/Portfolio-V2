@@ -23,7 +23,7 @@ function Node({ x, y, w, h, title, note, emphasis = false, code = false }: NodeP
         width={w}
         height={h}
         rx={4}
-        className={emphasis ? 'fill-brand-soft stroke-brand' : 'fill-white stroke-ink/60'}
+        className={emphasis ? 'fill-brand-soft stroke-brand' : 'fill-surface stroke-ink/60'}
         strokeWidth={emphasis ? 1.75 : 1}
       />
       <text
@@ -37,7 +37,13 @@ function Node({ x, y, w, h, title, note, emphasis = false, code = false }: NodeP
         {title}
       </text>
       {note && (
-        <text x={cx} y={y + h / 2 + 15} textAnchor="middle" className={`fill-muted ${code ? 'font-mono' : 'font-sans'}`} fontSize={code ? 11 : 12}>
+        <text
+          x={cx}
+          y={y + h / 2 + 15}
+          textAnchor="middle"
+          className={`fill-muted ${code ? 'font-mono' : 'font-sans'}`}
+          fontSize={code ? 11 : 12}
+        >
           {note}
         </text>
       )}
@@ -46,32 +52,27 @@ function Node({ x, y, w, h, title, note, emphasis = false, code = false }: NodeP
 }
 
 function Wire({ d }: { d: string }) {
-  return (
-    <path
-      d={d}
-      className="stroke-ink/50"
-      fill="none"
-      strokeWidth={1.25}
-      markerEnd="url(#arrow)"
-    />
-  );
+  return <path d={d} className="stroke-ink/50" fill="none" strokeWidth={1.25} markerEnd="url(#arrow)" />;
 }
 
 export default function ArchitectureDiagram() {
   return (
-    <svg
-      viewBox="0 0 560 420"
-      role="img"
-      aria-labelledby="arch-title arch-desc"
-      className="h-auto w-full"
-    >
+    <svg viewBox="0 0 560 420" role="img" aria-labelledby="arch-title arch-desc" className="h-auto w-full">
       <title id="arch-title">Hangle 배포 구조도</title>
       <desc id="arch-desc">
         GitHub push가 Jenkins를 거쳐 AWS EC2로 배포됩니다. EC2 안의 Docker Compose에서 Nginx와 React가 Spring Boot API로
         요청을 넘기고, Spring Boot는 MySQL, Redis, Ollama 챗봇, Python 채점 스크립트를 호출합니다.
       </desc>
       <defs>
-        <marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <marker
+          id="arrow"
+          viewBox="0 0 8 8"
+          refX="7"
+          refY="4"
+          markerWidth="7"
+          markerHeight="7"
+          orient="auto-start-reverse"
+        >
           <path d="M0,0 L8,4 L0,8 z" className="fill-ink/50" />
         </marker>
       </defs>
@@ -87,7 +88,15 @@ export default function ArchitectureDiagram() {
 
       {/* EC2 경계 */}
       <g>
-        <rect x={10} y={116} width={540} height={292} rx={6} className="fill-subtle stroke-ink/30" strokeDasharray="5 4" />
+        <rect
+          x={10}
+          y={116}
+          width={540}
+          height={292}
+          rx={6}
+          className="fill-subtle stroke-ink/30"
+          strokeDasharray="5 4"
+        />
         <text x={26} y={140} className="fill-muted font-sans" fontSize={12}>
           AWS EC2 한 대 (RAM 약 2GB), Docker Compose
         </text>

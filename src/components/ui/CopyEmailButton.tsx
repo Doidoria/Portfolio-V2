@@ -29,7 +29,11 @@ export default function CopyEmailButton({ email, variant = 'primary' }: { email:
   };
 
   const label =
-    state === 'copied' ? '이메일 주소를 복사했습니다' : state === 'failed' ? '복사 실패, 주소를 직접 선택하세요' : '이메일 주소 복사';
+    state === 'copied'
+      ? '이메일 주소를 복사했습니다'
+      : state === 'failed'
+        ? '복사 실패, 주소를 직접 선택하세요'
+        : '이메일 주소 복사';
 
   return (
     <button type="button" onClick={handleCopy} className={buttonStyles[variant]}>
