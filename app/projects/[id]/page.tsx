@@ -1,55 +1,108 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { projectsData } from '@/src/data/projects';
+import SiteHeader from '@/src/components/sections/SiteHeader';
+import Contact from '@/src/components/sections/Contact';
+import {
+  ApiTable,
+  ContributionList,
+  ProjectLinks,
+  ProjectMeta,
+  TroubleshootingBlock,
+} from '@/src/components/project/ProjectParts';
+import { getProject, projectsData } from '@/src/data/projects';
 
-export default async function ProjectDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const resolvedParams = await params;
-  const project = projectsData.find((p) => p.id === resolvedParams.id);
+interface Props {
+  params: Promise<{ id: string }>;
+}
 
-  if (!project) return notFound();
+// 프로젝트 데이터가 정적이라 빌드 시 전부 생성하고, 목록에 없는 id는 404
+export const dynamicParams = false;
+
+export function generateStaticParams(): { id: string }[] {
+  return projectsData.map((p) => ({ id: p.id }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+  const project = getProject(id);
+  if (!project) return {};
+  return { title: project.title, description: project.summary };
+}
+
+export default async function ProjectDetailPage({ params }: Props) {
+  const { id } = await params;
+  const project = getProject(id);
+  if (!project) notFound();
 
   return (
-    <main className="min-h-screen bg-[#030303] text-white pt-24 px-6 md:px-12 max-w-5xl mx-auto">
-      <div className="relative w-full h-64 md:h-[500px] rounded-3xl overflow-hidden mb-12">
-        <Image src={project.thumbnail} alt={project.title} 
-          fill 
-          sizes="(max-width: 768px) 100vw, 1024px" 
-          className="object-cover object-top" />
-      </div>
-      
-      <h1 className="text-5xl md:text-6xl font-bold mb-6">{project.title}</h1>
-      
-      <div className="flex flex-wrap gap-2 mb-12">
-        {project.techStacks.map((tech) => (
-          <span key={tech} className="px-4 py-2 text-sm font-medium text-[#1ee8b8] bg-[#1ee8b8]/10 rounded-full border border-[#1ee8b8]/20">
-            {tech}
-          </span>
-        ))}
-      </div>
+    <>
+      <SiteHeader />
+      <main className="mx-auto max-w-6xl px-5 pb-24 pt-10 sm:px-8">
+        <Link href="/#projects" className="text-[0.9375rem] text-muted underline-offset-4 hover:text-ink hover:underline">
+          프로젝트 목록으로
+        </Link>
 
-      <div className="space-y-6 mb-12">
-        {project.detailedDesc.map((desc, i) => (
-          <p key={i} className="text-gray-300 text-xl leading-relaxed">{desc}</p>
-        ))}
-      </div>
+        <div className="mt-8 grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-16">
+          <div>
+            <h1 className="text-4xl font-bold tracking-[-0.03em] sm:text-5xl">{project.title}</h1>
+            <p className="mt-4 max-w-[34em] text-lg leading-[1.8]">{project.summary}</p>
+            <div className="mt-8">
+              <ProjectMeta project={project} />
+            </div>
+            <div className="mt-8">
+              <ProjectLinks project={project} />
+            </div>
+          </div>
+          <div className="space-y-5">
+            {project.overview.map((p) => (
+              <p key={p} className="max-w-[38em] text-ink/85">
+                {p}
+              </p>
+            ))}
+            <div className="relative aspect-[16/10] overflow-hidden rounded-md border border-line bg-surface">
+              <Image
+                src={project.thumbnail}
+                alt={`${project.title} 화면`}
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 640px"
+                className="object-cover object-top"
+              />
+            </div>
+          </div>
+        </div>
 
-      <div className="flex flex-wrap gap-4">
-        {project.links.github && (
-          <a href={project.links.github} target="_blank" rel="noreferrer" className="px-8 py-4 bg-white text-black font-semibold rounded-xl hover:bg-gray-200 transition-colors">
-            GitHub Repo
-          </a>
+        <section aria-labelledby="work-title" className="mt-20 grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-16">
+          <div>
+            <h2 id="work-title" className="mb-6 text-2xl font-bold tracking-[-0.02em]">
+              맡은 일
+            </h2>
+            <ContributionList contributions={project.contributions} />
+          </div>
+          {project.apis && project.apis.length > 0 && (
+            <div>
+              <h2 className="mb-6 text-2xl font-bold tracking-[-0.02em]">직접 만든 API</h2>
+              <ApiTable apis={project.apis} caption={`${project.title} 담당 API`} />
+            </div>
+          )}
+        </section>
+
+        {project.troubleshooting.length > 0 && (
+          <section aria-labelledby="trouble-title" className="mt-20">
+            <h2 id="trouble-title" className="mb-6 text-2xl font-bold tracking-[-0.02em]">
+              문제 해결
+            </h2>
+            <div className="grid gap-6 lg:grid-cols-2">
+              {project.troubleshooting.map((t) => (
+                <TroubleshootingBlock key={t.title} item={t} />
+              ))}
+            </div>
+          </section>
         )}
-        {project.links.live && (
-          <a href={project.links.live} target="_blank" rel="noreferrer" className="px-8 py-4 bg-transparent border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors">
-            Live Site
-          </a>
-        )}
-        {project.links.ppt && (
-          <a href={project.links.ppt} target="_blank" rel="noreferrer" className="px-8 py-4 bg-transparent border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition-colors">
-            발표 자료
-          </a>
-        )}
-      </div>
-    </main>
+      </main>
+      <Contact />
+    </>
   );
 }

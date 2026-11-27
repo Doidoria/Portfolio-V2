@@ -1,38 +1,35 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import '@fontsource/ibm-plex-sans-kr/korean-400.css';
+import '@fontsource/ibm-plex-sans-kr/korean-500.css';
+import '@fontsource/ibm-plex-sans-kr/korean-700.css';
+import '@fontsource/ibm-plex-sans-kr/latin-400.css';
+import '@fontsource/ibm-plex-sans-kr/latin-500.css';
+import '@fontsource/ibm-plex-sans-kr/latin-700.css';
+import '@fontsource/ibm-plex-mono/latin-400.css';
+import './globals.css';
 
-const inter = Inter({ subsets: ["latin"] });
-
-// Lighthouse SEO 100점을 위한 완벽한 메타 데이터 세팅
 export const metadata: Metadata = {
-  title: "윤태현 | Full-stack Developer Portfolio",
-  description: "풀스택 개발자 윤태현의 포트폴리오입니다. Spring Boot와 Next.js로 인증, 결제, 관리자 시스템을 갖춘 웹 서비스를 개발합니다.",
-  keywords: ["윤태현", "풀스택 개발자", "백엔드", "Spring Boot", "Next.js", "TypeScript", "포트폴리오"],
-  authors: [{ name: "윤태현" }],
+  title: {
+    default: '윤태현 | 백엔드 중심 풀스택 개발자',
+    template: '%s | 윤태현 포트폴리오',
+  },
+  description:
+    'Spring Boot로 인증과 REST API를 만들고 Docker, Jenkins로 직접 배포·운영해 본 풀스택 개발자 윤태현의 포트폴리오입니다.',
+  keywords: ['윤태현', '풀스택 개발자', '백엔드 개발자', 'Spring Boot', 'Spring Security', 'JWT', 'Next.js', '포트폴리오'],
+  authors: [{ name: '윤태현' }],
   openGraph: {
-    title: "윤태현 | Full-stack Developer",
-    description: "Spring Boot · Next.js 풀스택 개발자 포트폴리오",
-    url: "https://doidoria.github.io", // 또는 나중에 발급받을 vercel 주소
-    siteName: "Yoon Tae Hyun Portfolio",
-    locale: "ko_KR",
-    type: "website",
+    title: '윤태현 | 백엔드 중심 풀스택 개발자',
+    description: 'Spring Boot, Next.js 풀스택 개발자 포트폴리오',
+    siteName: '윤태현 포트폴리오',
+    locale: 'ko_KR',
+    type: 'website',
   },
 };
 
-export default function RootLayout({
-  children,
-  modal, 
-}: Readonly<{
-  children: React.ReactNode;
-  modal: React.ReactNode; 
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ko" className="scroll-smooth">
-      <body className={`${inter.className} bg-[#030303] text-white antialiased`}>
-        {children}
-        {modal}
-      </body>
+      <body className="bg-paper text-ink antialiased">{children}</body>
     </html>
   );
 }
