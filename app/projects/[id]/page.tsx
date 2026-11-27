@@ -32,7 +32,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: project.title,
     description: project.summary,
     alternates: { canonical: `/projects/${project.id}` },
-    openGraph: { url: `/projects/${project.id}` },
+    // openGraph는 layout 값과 병합되지 않고 통째로 대체되므로 공통 항목을 다시 적는다
+    openGraph: {
+      title: `${project.title} | 윤태현 포트폴리오`,
+      description: project.summary,
+      url: `/projects/${project.id}`,
+      siteName: '윤태현 포트폴리오',
+      locale: 'ko_KR',
+      type: 'article',
+    },
   };
 }
 
