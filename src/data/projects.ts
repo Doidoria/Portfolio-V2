@@ -9,6 +9,16 @@ export const projectsData: Project[] = [
     period: '2025.10 - 2025.12',
     team: '5인 팀, 팀장',
     backend: 'Spring Boot REST API, MySQL, Redis, Docker Compose로 EC2 단일 서버 운영',
+    tag: 'Spring Boot + React',
+    highlights: [
+      'JWT 인증 필터와 Redis Refresh Token, OAuth2 로그인',
+      'USER, MANAGER, ADMIN 역할별 API 접근 권한',
+      'Docker Compose 5개 컨테이너, Jenkins 배포 자동화',
+    ],
+    stats: [
+      { label: '평상시 메모리 사용률', value: '75% → 43%' },
+      { label: '운영 서버', value: 'EC2 한 대' },
+    ],
     stack: ['Java', 'Spring Boot', 'Spring Security', 'JPA', 'MySQL', 'Redis', 'Spring AI', 'React', 'Docker', 'Jenkins', 'Nginx', 'AWS EC2'],
     thumbnail: '/images/projects/hangle.png',
     links: {
@@ -72,6 +82,7 @@ export const projectsData: Project[] = [
         result: '프론트엔드와 백엔드 사이의 요청 형식 확인이 줄었고, 일정 지연 없이 12월 최종 배포를 마쳤습니다.',
       },
     ],
+    hasArchitecture: true,
     apis: [
       { method: 'POST', path: '/api/user/login', desc: 'JWT 로그인' },
       { method: 'POST', path: '/api/auth/signup', desc: '회원가입' },
@@ -90,6 +101,8 @@ export const projectsData: Project[] = [
     period: '2026.03 - 2026.04',
     team: '개인 프로젝트',
     backend: 'Firebase Auth, Firestore, Storage',
+    tag: 'React + Firebase',
+    highlights: ['운영진 전용 공지·콘테스트 관리 화면', 'Firestore로 투표 집계와 중복 투표 방지', '모바일·태블릿 반응형'],
     stack: ['React', 'Vite', 'JavaScript', 'Tailwind CSS', 'Firebase', 'React Router'],
     thumbnail: '/images/projects/dotaikun.png',
     links: {
@@ -127,6 +140,8 @@ export const projectsData: Project[] = [
     period: '2025.11 - 2025.12',
     team: '개인 프로젝트',
     backend: 'Firestore 실시간 구독, Firebase Storage',
+    tag: 'Next.js + Firebase',
+    highlights: ['주문이 관리 화면에 새로고침 없이 반영', '메뉴 등록·품절 처리, 당일 매출 집계', 'Zustand 장바구니 상태 관리'],
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Zustand', 'Firebase'],
     thumbnail: '/images/projects/kiosk.png',
     links: {
@@ -172,6 +187,8 @@ export const projectsData: Project[] = [
     period: '2025.07 - 2025.09',
     team: '개인 프로젝트',
     backend: 'OpenAI API 호출',
+    tag: 'React',
+    highlights: ['채팅 입력과 대화 목록 화면', 'OpenAI API 요청·응답 연동'],
     stack: ['React', 'JavaScript', 'HTML/CSS'],
     thumbnail: '/images/projects/doai.png',
     links: {

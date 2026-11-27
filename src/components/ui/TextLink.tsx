@@ -2,22 +2,46 @@
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 
+export type ButtonVariant = 'primary' | 'secondary' | 'dark';
+
 const base =
-  'inline-flex items-center gap-1.5 rounded-md border border-ink/25 px-4 py-2.5 text-[0.9375rem] font-medium text-ink transition-colors hover:border-spring hover:text-spring';
+  'inline-flex min-h-12 items-center justify-center gap-2 rounded-xl px-5 text-base font-bold transition-colors';
+
+export const buttonStyles: Record<ButtonVariant, string> = {
+  primary: `${base} bg-brand text-white hover:bg-brand-dark`,
+  secondary: `${base} bg-field text-[#333d4b] hover:bg-line`,
+  dark: `${base} bg-ink text-white hover:bg-[#333d4b]`,
+};
 
 /** 외부 링크: 새 탭으로 열린다는 걸 스크린리더에도 알린다 */
-export function ExternalButton({ href, children }: { href: string; children: ReactNode }) {
+export function ExternalButton({
+  href,
+  children,
+  variant = 'secondary',
+}: {
+  href: string;
+  children: ReactNode;
+  variant?: ButtonVariant;
+}) {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" className={base}>
+    <a href={href} target="_blank" rel="noopener noreferrer" className={buttonStyles[variant]}>
       {children}
       <span className="sr-only">(새 탭에서 열림)</span>
     </a>
   );
 }
 
-export function InternalButton({ href, children }: { href: string; children: ReactNode }) {
+export function InternalButton({
+  href,
+  children,
+  variant = 'secondary',
+}: {
+  href: string;
+  children: ReactNode;
+  variant?: ButtonVariant;
+}) {
   return (
-    <Link href={href} className={base}>
+    <Link href={href} className={buttonStyles[variant]}>
       {children}
     </Link>
   );

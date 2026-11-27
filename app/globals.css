@@ -1,25 +1,28 @@
 @import "tailwindcss";
 
 /*
-  디자인 토큰
-  - paper: 회녹색 종이 바탕 / surface: 흰 면 / ink: 본문 / muted: 보조 텍스트
-  - line: 구분선 / spring: 유일한 강조색 (Spring Boot 녹색을 어둡게 조정, 흰 바탕 대비 AA)
+  디자인 토큰 (C안: IT 서비스형)
+  - bg: 흰 바탕 / subtle: 구역 배경 / field: 보조 버튼 면
+  - ink: 본문 / muted: 보조 텍스트 (흰 바탕 대비 7:1) / line: 테두리
+  - brand: 유일한 강조색 (흰 바탕 대비 AA) / brand-soft: 강조 배경
 */
 @theme {
-  --color-paper: #edf1ed;
-  --color-surface: #ffffff;
-  --color-ink: #17211b;
-  --color-muted: #56625a;
-  --color-line: #cbd4cd;
-  --color-spring: #2e7d32;
-  --color-spring-soft: #e0eddf;
+  --color-bg: #ffffff;
+  --color-subtle: #f4f6f9;
+  --color-field: #f2f4f6;
+  --color-ink: #191f28;
+  --color-muted: #4e5968;
+  --color-line: #e5e8eb;
+  --color-brand: #2b5fe0;
+  --color-brand-dark: #1d47b3;
+  --color-brand-soft: #ebf1fd;
 
-  --font-sans: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --font-sans: "Gothic A1", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
 
 html {
-  background: var(--color-paper);
+  background: var(--color-bg);
   color: var(--color-ink);
   -webkit-text-size-adjust: 100%;
 }
@@ -27,58 +30,24 @@ html {
 body {
   font-family: var(--font-sans);
   font-size: 1.0625rem; /* 17px */
-  line-height: 1.75;
+  line-height: 1.7;
   word-break: keep-all; /* 한국어 어절 단위 줄바꿈 */
   overflow-wrap: anywhere;
 }
 
 ::selection {
-  background: var(--color-spring-soft);
+  background: var(--color-brand-soft);
   color: var(--color-ink);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-spring);
+  outline: 2px solid var(--color-brand);
   outline-offset: 3px;
-  border-radius: 2px;
-}
-
-/* 히어로 구조도: 페이지 진입 시 한 번만 그려지는 애니메이션 */
-@keyframes draw-line {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-@keyframes node-in {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.arch-node {
-  animation: node-in 420ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
-  animation-delay: var(--d, 0ms);
-}
-.arch-wire {
-  stroke-dasharray: 400;
-  stroke-dashoffset: 400;
-  animation: draw-line 600ms ease-out forwards;
-  animation-delay: var(--d, 0ms);
+  border-radius: 6px;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-  .arch-node,
-  .arch-wire {
-    animation: none;
-    stroke-dashoffset: 0;
-    opacity: 1;
   }
 }

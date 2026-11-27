@@ -2,10 +2,11 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Check, Copy } from 'lucide-react';
+import { buttonStyles, type ButtonVariant } from '@/src/components/ui/TextLink';
 
 type CopyState = 'idle' | 'copied' | 'failed';
 
-export default function CopyEmailButton({ email, className = '' }: { email: string; className?: string }) {
+export default function CopyEmailButton({ email, variant = 'primary' }: { email: string; variant?: ButtonVariant }) {
   const [state, setState] = useState<CopyState>('idle');
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -31,11 +32,7 @@ export default function CopyEmailButton({ email, className = '' }: { email: stri
     state === 'copied' ? '이메일 주소를 복사했습니다' : state === 'failed' ? '복사 실패, 주소를 직접 선택하세요' : '이메일 주소 복사';
 
   return (
-    <button
-      type="button"
-      onClick={handleCopy}
-      className={`inline-flex items-center gap-2 rounded-md bg-ink px-4 py-2.5 text-[0.9375rem] font-medium text-paper transition-colors hover:bg-spring ${className}`}
-    >
+    <button type="button" onClick={handleCopy} className={buttonStyles[variant]}>
       {state === 'copied' ? <Check className="h-4 w-4" aria-hidden /> : <Copy className="h-4 w-4" aria-hidden />}
       <span aria-live="polite">{label}</span>
     </button>

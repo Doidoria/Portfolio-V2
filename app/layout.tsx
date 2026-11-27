@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
-import '@fontsource/ibm-plex-sans-kr/korean-400.css';
-import '@fontsource/ibm-plex-sans-kr/korean-500.css';
-import '@fontsource/ibm-plex-sans-kr/korean-700.css';
-import '@fontsource/ibm-plex-sans-kr/latin-400.css';
-import '@fontsource/ibm-plex-sans-kr/latin-500.css';
-import '@fontsource/ibm-plex-sans-kr/latin-700.css';
+import '@fontsource/gothic-a1/korean-400.css';
+import '@fontsource/gothic-a1/korean-500.css';
+import '@fontsource/gothic-a1/korean-700.css';
+import '@fontsource/gothic-a1/korean-800.css';
+import '@fontsource/gothic-a1/latin-400.css';
+import '@fontsource/gothic-a1/latin-500.css';
+import '@fontsource/gothic-a1/latin-700.css';
+import '@fontsource/gothic-a1/latin-800.css';
 import '@fontsource/ibm-plex-mono/latin-400.css';
 import './globals.css';
 
@@ -32,7 +34,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ko" className="scroll-smooth">
-      <body className="bg-paper text-ink antialiased">{children}</body>
+      <body className="bg-bg text-ink antialiased">{children}</body>
     </html>
   );
 }

@@ -6,7 +6,7 @@
 
 - Next.js 16 (App Router), React 19, TypeScript
 - Tailwind CSS 4
-- 글꼴: IBM Plex Sans KR, IBM Plex Mono (Fontsource로 자체 호스팅)
+- 글꼴: Gothic A1, IBM Plex Mono(코드 표기) — Fontsource로 자체 호스팅
 - 배포: Vercel
 
 ## 구조
@@ -15,13 +15,13 @@
 app/
   layout.tsx              메타데이터, 글꼴
   page.tsx                메인 (소개, 대표 프로젝트, 그 밖의 프로젝트, 기술, 연락처)
+                          상세 내용(맡은 일, API, 문제 해결)은 프로젝트 상세 페이지에 있음
   projects/[id]/page.tsx  프로젝트 상세 (빌드 시 정적 생성)
 src/
   data/projects.ts        프로젝트 내용 (여기만 고치면 화면에 반영)
   data/profile.ts         연락처, 기술 목록
   components/
-    hero/                 Hangle 배포 구조도 (SVG, CSS 애니메이션)
-    project/              맡은 일, API 표, 문제 해결 블록
+    project/              프로젝트 타일, 맡은 일, API 표, 문제 해결, Hangle 구조도
     sections/             메인 페이지 구역
   types/index.ts          데이터 타입
 ```

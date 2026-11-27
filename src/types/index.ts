@@ -29,6 +29,11 @@ export interface ProjectLinks {
   ppt?: string;
 }
 
+export interface Stat {
+  label: string;
+  value: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -39,6 +44,12 @@ export interface Project {
   team: string;
   /** 서버 구조 한 줄 (예: 'Spring Boot REST API + MySQL') */
   backend: string;
+  /** 목록 타일에 보이는 짧은 기술 표기 (예: 'Next.js + Firebase') */
+  tag: string;
+  /** 메인에서 보여 줄 핵심 3줄 */
+  highlights: string[];
+  /** 대표 프로젝트 수치 타일 (선택) */
+  stats?: Stat[];
   stack: string[];
   thumbnail: string;
   links: ProjectLinks;
@@ -46,4 +57,6 @@ export interface Project {
   contributions: Contribution[];
   troubleshooting: Troubleshooting[];
   apis?: ApiEndpoint[];
+  /** 상세 페이지에 서버 구조도를 보여 줄지 (Hangle) */
+  hasArchitecture?: boolean;
 }
