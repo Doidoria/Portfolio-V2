@@ -50,15 +50,15 @@ export default function Hero() {
         </motion.div>
 
         <motion.p variants={itemVariants} className="mb-6 text-lg md:text-xl font-medium tracking-[0.2em] text-[#1ee8b8]">
-          FRONTEND DEVELOPER & WEB PUBLISHER
+          FULL-STACK DEVELOPER · SPRING BOOT & NEXT.JS
         </motion.p>
         
         <motion.h1 variants={itemVariants} className="mb-8 text-5xl font-extrabold tracking-tight text-white md:text-8xl">
-          Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Yoon Tae Hyun</span>
+          Hi, I&apos;m <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">Yoon Tae Hyun</span>
         </motion.h1>
         
         <motion.p variants={itemVariants} className="max-w-2xl mx-auto mb-12 text-lg text-gray-400 md:text-2xl font-light leading-relaxed">
-          웹 접근성과 반응형 웹을 준수하며, 사용자를 생각하는 직관적인 UI/UX와 확장성 있는 아키텍처를 설계합니다.
+          기획 확인부터 화면, API, 배포까지 혼자 끝까지 만들어 본 풀스택 개발자입니다. Spring Boot 기반의 안정적인 백엔드와 사용하기 쉬운 화면을 함께 설계합니다.
         </motion.p>
 
         {/* 깃허브 & 노션 링크 버튼 */}
